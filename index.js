@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
 const compression = require('compression');
-
+app.use('/static',express.static('static'));
 app.use(compression());
+const apiRoutes = require('./api-routes.js');
+app.use(apiRoutes);
 
 if (process.env.NODE_ENV != 'production') {
     app.use(
