@@ -31,7 +31,7 @@ export default function AllProducts() {
                             <img src={product.picture}></img>
                         </div>
                         <div className="produktname">
-                            {product.name}
+                            {product.name} - {product.price / 100} €
                         </div>
                     </Link>
                 </div>

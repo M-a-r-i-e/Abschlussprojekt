@@ -17,3 +17,4 @@ exports.getProduct = (id) => {
         .query("SELECT * FROM products WHERE id=$1;", [id])
         .then(({ rows }) => rows[0]);
 };
+

@@ -8,7 +8,6 @@ const db = require("./db.js");
 router.get("/api/v1/products", (request, response) => {
 
     db.loadProducts().then((products => {
-        console.log("products", products);
         response.json({
             success: true,
             products,

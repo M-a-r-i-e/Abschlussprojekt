@@ -29,6 +29,7 @@ export default class Details extends React.Component {
             }
 
         });
+
     }
 
     render() {
@@ -52,7 +53,7 @@ export default class Details extends React.Component {
                     <p className="produktdescription">{description}</p>
                     <h3 className="produktprice">{price} €</h3>
                     <input type="number" min="1" max="10" defaultValue="1"></input>
-                    <button>In den Warenkorb</button>
+                    <button onClick={(e) => this.props.addToCard(this.state.product)}>In den Warenkorb</button>
 
                 </div>
             );

@@ -7,9 +7,9 @@
 
 #maincontainer {
     margin: 0px;
-    /* display: flex; */
-    /* flex-direction: column;
-    align-items: center; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #welcome {
@@ -98,6 +98,10 @@
 
 } */
 
+#header {
+    width: 100%;
+    height: 200px;
+}
 
 #logo img {
 
@@ -120,17 +124,27 @@
     margin-right: 20px;
 }
 
+#warenkorb #anzahl {
+    float: right;
+    width: 15px;
+    height: 15px;
+    border: 0.5px solid black;
+    border-radius: 10px;
+    margin-top: -105px;
+    margin-right: 60px;
+}
+
 #slider img {
 
     width: 100%;
     height: 100%;
-    position: fixed;
+    position: relative;
     object-fit: cover;
-    margin-top: -170px;
+    margin-top: -220px;
     margin-left: -10px;
+    margin-right: -10px;
     z-index: -10;
-
-}
+} 
 
 
 .overview_products {
@@ -141,6 +155,7 @@
     align-content: center;
     justify-content: center;
 }
+
 
 .overview_products .produktbild img{
 
@@ -258,4 +273,9 @@
     align-self: end;
     margin-bottom: 100px;
 
+}
+
+.warenkorbprodukte img{
+    width: 100px;
+    height: 100px;
 }
