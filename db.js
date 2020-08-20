@@ -10,3 +10,10 @@ exports.loadProducts = () => {
     return db.query(`SELECT * FROM products`).then((response) => response.rows);
 
 };
+
+
+exports.getProduct = (id) => {
+    return db
+        .query("SELECT * FROM products WHERE id=$1;", [id])
+        .then(({ rows }) => rows[0]);
+};
