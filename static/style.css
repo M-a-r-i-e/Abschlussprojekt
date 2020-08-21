@@ -10,6 +10,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100vh;
 }
 
 #welcome {
@@ -100,7 +101,7 @@
 
 #header {
     width: 100%;
-    height: 200px;
+    margin-bottom: 80px;
 }
 
 #logo img {
@@ -140,7 +141,7 @@
     height: 100%;
     position: relative;
     object-fit: cover;
-    margin-top: -220px;
+    margin-top: -240px;
     margin-left: -10px;
     margin-right: -10px;
     z-index: -10;
@@ -219,9 +220,9 @@
     border: 2px solid rgb(150, 150, 150);
 }
 
-/* .detailprodukt button:active {
-    border: 2px solid rgb(150, 150, 150);
-} */
+.detailprodukt button:focus {
+    outline: none;
+}
 
 .detailprodukt input {
 
@@ -278,4 +279,9 @@
 .warenkorbprodukte img{
     width: 100px;
     height: 100px;
+}
+
+#footer {
+    background-color: darkred;
+    width: 100%;
 }

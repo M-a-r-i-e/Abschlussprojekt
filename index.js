@@ -1,10 +1,12 @@
 const express = require('express');
 const app = express();
 const compression = require('compression');
+const apiRoutes = require('./api-routes.js');
+const db = require ("./db.js");
+app.use(express.json());
+app.use(apiRoutes);
 app.use('/static',express.static('static'));
 app.use(compression());
-const apiRoutes = require('./api-routes.js');
-app.use(apiRoutes);
 
 if (process.env.NODE_ENV != 'production') {
     app.use(

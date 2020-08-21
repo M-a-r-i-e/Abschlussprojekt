@@ -39,3 +39,31 @@ INSERT INTO products (name, article_number, picture) VALUES ('test5', 105, '/sta
 
 INSERT INTO products (name, article_number, picture) VALUES ('test6', 106, '/static/products/6.JPG');
 
+
+
+DROP TABLE IF EXISTS warenkorb;
+
+CREATE TABLE warenkorb (
+    id SERIAL PRIMARY KEY, 
+    randomUser VARCHAR,
+    product_id INTEGER REFERENCES products(id),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+);
+
+
+
+CREATE TABLE bestellungen (
+    id SERIAL PRIMARY KEY, 
+    email
+    lastname
+    firstname 
+    street
+    city
+    comments
+    
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+);
+
+
+
+-- warenkorb INTEGER REFERENCES warenkorb(id),

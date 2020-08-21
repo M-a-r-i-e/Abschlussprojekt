@@ -5,7 +5,8 @@ import Overview from "./Overview.js";
 import {Link} from "react-router-dom";
 import Details from "./Details";
 import Warenkorb from "./Warenkorb";
-
+import Buy from "./Buy";
+import Thankyou from "./Thankyou";
 
 // export default function App() {
 //     return (
@@ -71,17 +72,6 @@ export default class App extends React.Component {
                     <Route path="/shop" component={Overview}>
                     </Route>
 
-                    {/* <Route 
-                        path="/product/:id" 
-                        render={props => (
-                            <Details
-                                key={props.match.url}
-                                match={props.match}
-                                history={props.history}
-                            />
-                        )}    
-                    
-                    /> */}
                     <Route 
                         path="/product/:id" 
                         render={props => (
@@ -102,11 +92,6 @@ export default class App extends React.Component {
                         )}    
                     />
 
-                    {/* <Route 
-                        path="/warenkorb" 
-                        name = {productsInWarenkorb.name}
-                        component={Warenkorb}>
-                    </Route> */}
                     <Route 
                         path="/warenkorb" 
                         render={() => (
@@ -115,6 +100,24 @@ export default class App extends React.Component {
                             />
                         )}    
                     />
+
+                    <Route 
+                        path="/buy" 
+                        render={(props) => (
+                            <Buy
+                                history={props.history}
+                                productsInWarenkorb = {productsInWarenkorb}
+                            />
+                        )}    
+                    />
+
+                    <Route
+                        path="/thankyou" component={Thankyou}
+                    ></Route>
+
+                    <div id="footer">
+                        <div>copyright...</div>
+                    </div>
                 
                 </BrowserRouter>
 
