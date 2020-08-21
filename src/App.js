@@ -7,6 +7,7 @@ import Details from "./Details";
 import Warenkorb from "./Warenkorb";
 import Buy from "./Buy";
 import Thankyou from "./Thankyou";
+import Kontakt from "./Kontakt";
 
 // export default function App() {
 //     return (
@@ -19,7 +20,8 @@ export default class App extends React.Component {
     constructor() {
         super();
         this.state = {
-            productsInWarenkorb: []
+            productsInWarenkorb: [],
+            user: []
         };
     }
 
@@ -28,6 +30,9 @@ export default class App extends React.Component {
 
         const { productsInWarenkorb } = this.state;
         console.log("productstate", productsInWarenkorb);
+
+        const {user} = this.state;
+        console.log("user", user);
 
         return (
             
@@ -60,7 +65,7 @@ export default class App extends React.Component {
                                 <Link className="untermenu" to="">about</Link>
                             </div>
                             <div className="untermenushop">
-                                <Link className="untermenu" to="">kontakt</Link>
+                                <Link className="untermenu" to="/kontakt">kontakt</Link>
                             </div>
                         </div>
                     </div>
@@ -113,6 +118,10 @@ export default class App extends React.Component {
 
                     <Route
                         path="/thankyou" component={Thankyou}
+                    ></Route>
+
+                    <Route
+                        path="/kontakt" component={Kontakt}
                     ></Route>
 
                     <div id="footer">

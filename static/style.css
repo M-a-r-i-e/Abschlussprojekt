@@ -1,6 +1,8 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300,400,700|Roboto:400,400i,700,700i");
+
 #root{
 
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Quicksand;
     margin: 0px;
     padding: 0px;
 }
@@ -279,6 +281,8 @@
 .warenkorbprodukte img{
     width: 100px;
     height: 100px;
+    overflow: hidden;
+    object-fit: cover;
 }
 
 #footer {

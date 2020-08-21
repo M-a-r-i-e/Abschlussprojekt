@@ -31,9 +31,9 @@ export default class Warenkorb extends React.Component {
         return (
             <div>
                 <h1>Your Products</h1>
-                <div className="users">
+                <div className="products">
                     {productsInWarenkorb && productsInWarenkorb.map((product) =>
-                        <div key={product.id} className="warenkorbprodukte"><Link to={"/product/"+product.id}>{product.name} {product.price / 100} <img src={product.picture}></img></Link></div>)}
+                        <div key={product.id} className="warenkorbprodukte"><Link to={"/product/"+product.id}>{product.name} {product.price / 100} <img src={product.picture}></img></Link><button>delete</button></div>)}
                 </div>
                 <Link to="/buy"><button>Weiter</button></Link>
             </div>

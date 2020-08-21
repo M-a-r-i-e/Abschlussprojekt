@@ -116,13 +116,13 @@ router.get('/api/v1/warenkorb', (request, response) => {
 
 // email mit daten und warenkorb versenden
 router.post("/api/v1/buy", (request, response) => {
-
+    console.log("requestbodyproducts", request.body.products);
     const email = request.body.email;
 
     // db.fakeNutzerUndWarenkorbInDB(email).then((result) => {
 
     // Send email to slack
-    const emailBody = `Thank you for buying in our shop ${request.body.firstname}! .... `;
+    const emailBody = `Thank you for buying in our shop ${request.body.firstname}${request.body.lastname}! your address: ${request.body.city} `;
 
     ses.send(email, "bestellung", emailBody).then(() => {
             
@@ -132,7 +132,21 @@ router.post("/api/v1/buy", (request, response) => {
     // });
 });
 
+//kontaktformular
+router.post("/api/v1/kontaktmessage", (request, response) => {
+
+    const email = request.body.email;
+
+    // Send email to slack
+    const emailBody = `Thank you for this message ${request.body.firstname} ${request.body.lastname}. ${request.body.message} We will contact you as soon as possible.`;
+
+    ses.send(email, "nachricht", emailBody).then(() => {
+            
+    //Send success message
+        response.json({ success: true });
+    });
+    // });
+});
+
 
 module.exports = router;
-
-

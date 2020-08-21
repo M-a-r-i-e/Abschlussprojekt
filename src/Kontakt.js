@@ -4,34 +4,27 @@ import axios from "axios";
 import {Link, Redirect} from "react-router-dom";
 
 
-export default class Buy extends React.Component {
+export default class Kontakt extends React.Component {
     constructor() {
         super();
         this.state = {
-            products: "",
             email: "",
             lastname: "",
             firstname: "",
-            street: "",
-            number: "",
-            city: "",
-            comments: "",         
+            message: "",         
         };
     }
 
     //ajax call that sends the mailadress
-    sendEmail() {
-        console.log("this.props", this.props);
-        axios.post('/api/v1/buy', {
+    sendMessage() {
+        axios.post('/api/v1/kontaktmessage', {
             email: this.state.email,
             lastname: this.state.lastname,
             firstname: this.state.firstname,
-            street: this.state.street,
-            city: this.state.city,
-            products: this.props.productsInWarenkorb,
+            message: this.state.message,
         }).then(response => {
             // console.log("Response", response);
-            this.props.history.push("/thankyou");
+            // this.props.history.push("/thankyou");
         });
     }
 
@@ -46,20 +39,15 @@ export default class Buy extends React.Component {
 
     render() {
 
-        const {productsInWarenkorb} = this.props;
-
         return(
             
-            <div id="warenkorb" >
+            <div id="kontakt" >
                 <div>
                     <input type="text" name="email" placeholder="YOUR EMAIL" onChange={(event) => this.handleChange(event)}></input>
                     <input type="text" name="lastname" placeholder="LASTNAME" onChange={(event) => this.handleChange(event)}></input>
                     <input type="text" name="firstname" placeholder="FIRSTNAME" onChange={(event) => this.handleChange(event)}></input>
-                    <input type="text" name="street" placeholder="STREET" onChange={(event) => this.handleChange(event)}></input>
-                    <input type="text" name="number" placeholder="NUMBER" onChange={(event) => this.handleChange(event)}></input>
-                    <input type="text" name="city" placeholder="CITY" onChange={(event) => this.handleChange(event)}></input>
-                    <input type="text" name="comments" placeholder="COMMENTS" onChange={(event) => this.handleChange(event)}></input>
-                    <button onClick={(e) => this.sendEmail()} >BUY NOW</button> 
+                    <input type="text" name="message" placeholder="YOUR MESSAGE" onChange={(event) => this.handleChange(event)}></input>
+                    <button onClick={(e) => this.sendMessage()} >SEND</button> 
                 </div>
             </div>
 
