@@ -19,6 +19,14 @@ exports.loadBowls = () => {
     return db.query(`SELECT * FROM products WHERE kategorie='Bowls';`).then((response) => response.rows);
 };
 
+exports.loadPlates = () => {
+    return db.query(`SELECT * FROM products WHERE kategorie='Plates';`).then((response) => response.rows);
+};
+
+exports.loadVases = () => {
+    return db.query(`SELECT * FROM products WHERE kategorie='Vases';`).then((response) => response.rows);
+};
+
 exports.getProduct = (id) => {
     return db
         .query("SELECT * FROM products WHERE id=$1;", [id])

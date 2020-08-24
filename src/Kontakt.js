@@ -46,13 +46,13 @@ export default class Kontakt extends React.Component {
         return(
             
             <div id="kontaktcontainer" >
-                <div>WÜNSCHE, ANREGUNG, KRITIK?</div>
+                <h2>WÜNSCHE, ANREGUNG, KRITIK?</h2>
                 <div className="kontakt">
-                    <input type="text" value={this.state.email} name="email" placeholder="YOUR EMAIL" onChange={(event) => this.handleChange(event)}></input>
-                    <input type="text" value={this.state.lastname} name="lastname" placeholder="LASTNAME" onChange={(event) => this.handleChange(event)}></input>
-                    <input type="text" value={this.state.firstname} name="firstname" placeholder="FIRSTNAME" onChange={(event) => this.handleChange(event)}></input>
-                    <input className="message" type="text" value={this.state.message} name="message" placeholder="YOUR MESSAGE" onChange={(event) => this.handleChange(event)}></input>
-                    <button onClick={(e) => this.sendMessage()} >SEND</button> 
+                    <input type="text" value={this.state.email} name="email" placeholder="DEINE EMAIL" onChange={(event) => this.handleChange(event)}></input>
+                    <input type="text" value={this.state.lastname} name="lastname" placeholder="DEIN NAME" onChange={(event) => this.handleChange(event)}></input>
+                    <input type="text" value={this.state.firstname} name="firstname" placeholder="DEIN VORNAME" onChange={(event) => this.handleChange(event)}></input>
+                    <input className="message" type="text" value={this.state.message} name="message" placeholder="DEINE NACHRICHT" onChange={(event) => this.handleChange(event)}></input>
+                    <button onClick={(e) => this.sendMessage()} >SENDEN</button> 
                 </div>
             </div>
 

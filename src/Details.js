@@ -26,6 +26,7 @@ export default class Details extends React.Component {
                 this.setState({error: true});
             } else {
                 this.setState({product: response.data});
+                
             }
 
         });

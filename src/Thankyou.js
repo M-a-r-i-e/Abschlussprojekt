@@ -5,13 +5,24 @@ import {Link} from "react-router-dom";
 import Buy from "./Buy";
 
 
-export default function Thankyou() {
-   
-    return (
-        <div id="thanks" >
-            <div>
-                <p>Thank You</p>
+export default class Thankyou extends React.Component {
+    constructor() {
+        super();
+    }
+
+    render() {
+
+        const {user} = this.props;
+        console.log("userprops", user);
+
+        return (
+            <div id="thanks" >
+                <div>
+                    <div>
+                        <h1>Vielen Dank für deinen Einkauf {user.firstname}!</h1>
+                    </div>
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 }

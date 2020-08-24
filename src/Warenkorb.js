@@ -22,6 +22,26 @@ export default class Warenkorb extends React.Component {
         this.state = {
         };
     }
+    // componentDidMount() {
+
+    //     const id = this.props.match.params.id; // id aus URL?
+
+    //     console.log("id", id);
+        
+    //     axios.get('/api/v1/warenkorb/'+id).then(response => {
+
+    //         console.log("response", response);
+
+    //         // if(!response.data) {
+    //         //     this.setState({error: true});
+    //         // } else {
+    //         //     this.setState({product: response.data});
+                
+    //         // }
+
+    //     });
+
+    // }
 
 
     render() {
@@ -30,19 +50,25 @@ export default class Warenkorb extends React.Component {
 
         return (
             <div className="warenkorbcontainer">
-                <h1>Your Products</h1>
+                <h1>Deine Produkte:</h1>
                 <div className="warenkorballes">
                     <div className="products">
                         {productsInWarenkorb && productsInWarenkorb.map((product) =>
-                            <div key={product.id} className="warenkorbprodukte"><Link className="warenkorbnameprice" to={"/product/"+product.id}><div className="productname">{product.name}</div> <div className="productprice">{product.price / 100}</div> <img src={product.picture}></img></Link><button> DELETE</button></div>)}
+                            <div key={product.id} className="warenkorbprodukte">
+                                <Link className="warenkorbnameprice" to={"/product/"+product.id}>
+                                    <img src={product.picture}></img><div className="productname">{product.name}</div>
+                                    <div className="productprice">{product.price / 100}</div></Link></div>)}
+                        {/* <button onClick={(e) => this.props.delete(product.id)}>DELETE</button> */}
                     </div>
-                    <div className="summe"> {productsInWarenkorb.length > 0 && productsInWarenkorb.reduce((sum, i) => {
-                        sum = sum + (i.price/100);
-                        return sum ; 
-                    },0)} €
+                    <div className="warenkorbbutton">
+                        <div className="summe"> Summe: {productsInWarenkorb.length > 0 && productsInWarenkorb.reduce((sum, i) => {
+                            sum = sum + (i.price/100);
+                            return sum ; 
+                        },0)} €
 
+                        </div>
+                        <Link to="/buy"><button>WEITER</button></Link>
                     </div>
-                    <Link to="/buy"><button>Weiter</button></Link>
                 </div>
             </div>
         );       

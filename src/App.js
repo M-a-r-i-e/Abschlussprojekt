@@ -10,6 +10,9 @@ import Thankyou from "./Thankyou";
 import Kontakt from "./Kontakt";
 import Cups from "./Cups.js";
 import Bowls from "./Bowls.js";
+import Plates from "./Plates.js";
+import Vases from "./Vases.js";
+import About from "./About";
 
 // export default function App() {
 //     return (
@@ -54,17 +57,17 @@ export default class App extends React.Component {
                                 <div><Link className="untermenu" to="/shop">shop</Link>
                                     <div className="dropdown">
                                         <ul>
-                                            <li><Link className="linkmenu" to="/shop">All Products</Link></li>
-                                            <li><Link className="linkmenu" to="/shop/cups">Cups</Link></li>
-                                            <li><Link className="linkmenu" to="/shop/bowls">Bowls</Link></li>
-                                            <li><Link className="linkmenu" to="/shop">Plates</Link></li>
-                                            <li><Link className="linkmenu" to="/shop">Vasen</Link></li>
+                                            <li><Link className="linkmenu" to="/shop">Alle Produkte</Link></li>
+                                            <li><Link className="linkmenu" to="/shop/cups">Becher | Tassen</Link></li>
+                                            <li><Link className="linkmenu" to="/shop/bowls">Schüsseln</Link></li>
+                                            <li><Link className="linkmenu" to="/shop/plates">Teller</Link></li>
+                                            <li><Link className="linkmenu" to="/shop/vases">Vasen</Link></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             <div className="untermenushop">
-                                <Link className="untermenu" to="">about</Link>
+                                <Link className="untermenu" to="/about">über</Link>
                             </div>
                             <div className="untermenushop">
                                 <Link className="untermenu" to="/kontakt">kontakt</Link>
@@ -83,6 +86,12 @@ export default class App extends React.Component {
                     </Route>
 
                     <Route path="/shop/bowls" component={Bowls}>
+                    </Route>
+
+                    <Route path="/shop/plates" component={Plates}>
+                    </Route>
+
+                    <Route path="/shop/vases" component={Vases}>
                     </Route>
 
                     <Route 
@@ -110,6 +119,18 @@ export default class App extends React.Component {
                         render={() => (
                             <Warenkorb
                                 productsInWarenkorb = {productsInWarenkorb}
+                                // delete={(deleteProduct) => {
+                                //     this.setState({
+                                //         productsInWarenkorb: [
+                                //             ...this.state.productsInWarenkorb,
+                                //             productsInWarenkorb.filter(deleteProduct => {
+                                //                 if(productsInWarenkorb.id == deleteProduct) {
+                                //                     return false;
+                                //                 }                                
+                                //             })
+                                //         ]                                
+                                //     });
+                                // }}
                             />
                         )}    
                     />
@@ -123,22 +144,35 @@ export default class App extends React.Component {
 
                                 userData={(newUser) => {
                                     this.setState({
-                                        user: [
-                                            ...this.state.user,
-                                            newUser
-                                        ]
+                                        user: newUser                                      
                                     });
                                 }}
+
+                                reset={(newProduct) => {
+                                    this.setState({
+                                        productsInWarenkorb:
+                                            newProduct                                
+                                    });
+                                }}
+                                
+                            />
+                        )}    
+                    />
+                    
+                    <Route
+                        path="/about" component={About}
+                    ></Route>
+
+                    <Route 
+                        path="/thankyou" 
+                        render={() => (
+                            <Thankyou
+                                user = {user}
                             />
                         )}    
                     />
 
-                    <Route
-                        path="/thankyou" component={Thankyou}
-                        // user = {user}
-                    ></Route>
-
-                    <Route
+                    <Route      
                         path="/kontakt" component={Kontakt}
                     ></Route>
 
