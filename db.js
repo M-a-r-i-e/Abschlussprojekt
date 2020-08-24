@@ -11,6 +11,13 @@ exports.loadProducts = () => {
 
 };
 
+exports.loadCups = () => {
+    return db.query(`SELECT * FROM products WHERE kategorie='Cups';`).then((response) => response.rows);
+};
+
+exports.loadBowls = () => {
+    return db.query(`SELECT * FROM products WHERE kategorie='Bowls';`).then((response) => response.rows);
+};
 
 exports.getProduct = (id) => {
     return db

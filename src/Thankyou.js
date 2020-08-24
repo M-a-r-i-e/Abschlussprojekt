@@ -6,6 +6,7 @@ import Buy from "./Buy";
 
 
 export default function Thankyou() {
+   
     return (
         <div id="thanks" >
             <div>

@@ -8,6 +8,8 @@ import Warenkorb from "./Warenkorb";
 import Buy from "./Buy";
 import Thankyou from "./Thankyou";
 import Kontakt from "./Kontakt";
+import Cups from "./Cups.js";
+import Bowls from "./Bowls.js";
 
 // export default function App() {
 //     return (
@@ -44,7 +46,7 @@ export default class App extends React.Component {
                             <Link to ="/"><img src="./static/Logo.png"></img></Link>
                         </div>
                         <div id="warenkorb">
-                            <Link to ="/warenkorb"><img src="./static/warenkorb.png"></img> <div id="anzahl"></div></Link>
+                            <Link to ="/warenkorb"><img src="./static/warenkorb.png"></img> <div id="anzahl">{productsInWarenkorb.length}</div></Link>
                         </div>
                     
                         <div id="menu">
@@ -53,8 +55,8 @@ export default class App extends React.Component {
                                     <div className="dropdown">
                                         <ul>
                                             <li><Link className="linkmenu" to="/shop">All Products</Link></li>
-                                            <li><Link className="linkmenu" to="/shop">Cups</Link></li>
-                                            <li><Link className="linkmenu" to="/shop">Bowls</Link></li>
+                                            <li><Link className="linkmenu" to="/shop/cups">Cups</Link></li>
+                                            <li><Link className="linkmenu" to="/shop/bowls">Bowls</Link></li>
                                             <li><Link className="linkmenu" to="/shop">Plates</Link></li>
                                             <li><Link className="linkmenu" to="/shop">Vasen</Link></li>
                                         </ul>
@@ -74,7 +76,13 @@ export default class App extends React.Component {
                     <Route exact path="/" component={Welcomepage}>
                     </Route>
 
-                    <Route path="/shop" component={Overview}>
+                    <Route exact path="/shop" component={Overview}>
+                    </Route>
+
+                    <Route path="/shop/cups" component={Cups}>
+                    </Route>
+
+                    <Route path="/shop/bowls" component={Bowls}>
                     </Route>
 
                     <Route 
@@ -112,12 +120,22 @@ export default class App extends React.Component {
                             <Buy
                                 history={props.history}
                                 productsInWarenkorb = {productsInWarenkorb}
+
+                                userData={(newUser) => {
+                                    this.setState({
+                                        user: [
+                                            ...this.state.user,
+                                            newUser
+                                        ]
+                                    });
+                                }}
                             />
                         )}    
                     />
 
                     <Route
                         path="/thankyou" component={Thankyou}
+                        // user = {user}
                     ></Route>
 
                     <Route
@@ -125,7 +143,7 @@ export default class App extends React.Component {
                     ></Route>
 
                     <div id="footer">
-                        <div>copyright...</div>
+                        <div>copyright by me.</div>
                     </div>
                 
                 </BrowserRouter>

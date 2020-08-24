@@ -20,22 +20,30 @@ export default class Warenkorb extends React.Component {
     constructor() {
         super();
         this.state = {
-            total: 0,
         };
     }
+
 
     render() {
 
         const {productsInWarenkorb} = this.props;
 
         return (
-            <div>
+            <div className="warenkorbcontainer">
                 <h1>Your Products</h1>
-                <div className="products">
-                    {productsInWarenkorb && productsInWarenkorb.map((product) =>
-                        <div key={product.id} className="warenkorbprodukte"><Link to={"/product/"+product.id}>{product.name} {product.price / 100} <img src={product.picture}></img></Link><button>delete</button></div>)}
+                <div className="warenkorballes">
+                    <div className="products">
+                        {productsInWarenkorb && productsInWarenkorb.map((product) =>
+                            <div key={product.id} className="warenkorbprodukte"><Link className="warenkorbnameprice" to={"/product/"+product.id}><div className="productname">{product.name}</div> <div className="productprice">{product.price / 100}</div> <img src={product.picture}></img></Link><button> DELETE</button></div>)}
+                    </div>
+                    <div className="summe"> {productsInWarenkorb.length > 0 && productsInWarenkorb.reduce((sum, i) => {
+                        sum = sum + (i.price/100);
+                        return sum ; 
+                    },0)} €
+
+                    </div>
+                    <Link to="/buy"><button>Weiter</button></Link>
                 </div>
-                <Link to="/buy"><button>Weiter</button></Link>
             </div>
         );       
     }

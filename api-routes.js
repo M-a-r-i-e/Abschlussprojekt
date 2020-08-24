@@ -16,6 +16,7 @@ function warenkorbId (req, file, callback) {
 
 console.log("warenkorbId", warenkorbId);
 
+
 //alle Produkte
 
 router.get("/api/v1/products", (request, response) => {
@@ -41,6 +42,48 @@ router.get("/api/v1/products", (request, response) => {
 
 
 // produkte nach kategorien laden
+
+router.get("/api/v1/products/cups", (request, response) => {
+
+    db.loadCups().then((products => {
+        response.json({
+            success: true,
+            products,
+        });
+
+    })
+    
+    ).catch((error) => {
+        console.log("error", error);
+        response.status(500).json({
+            success: false,
+            error: error,
+        });
+
+    });
+
+});
+
+router.get("/api/v1/products/bowls", (request, response) => {
+
+    db.loadBowls().then((products => {
+        response.json({
+            success: true,
+            products,
+        });
+
+    })
+    
+    ).catch((error) => {
+        console.log("error", error);
+        response.status(500).json({
+            success: false,
+            error: error,
+        });
+
+    });
+
+});
 
 
 
@@ -120,15 +163,15 @@ router.post("/api/v1/buy", (request, response) => {
     const email = request.body.email;
 
     // db.fakeNutzerUndWarenkorbInDB(email).then((result) => {
-
     // Send email to slack
-    const emailBody = `Thank you for buying in our shop ${request.body.firstname}${request.body.lastname}! your address: ${request.body.city} `;
+    const emailBody = `Thank you for buying in our shop ${request.body.firstname}${request.body.lastname}! your address: ${request.body.city}`;
 
     ses.send(email, "bestellung", emailBody).then(() => {
             
     //Send success message
         response.json({ success: true });
     });
+
     // });
 });
 
@@ -138,7 +181,7 @@ router.post("/api/v1/kontaktmessage", (request, response) => {
     const email = request.body.email;
 
     // Send email to slack
-    const emailBody = `Thank you for this message ${request.body.firstname} ${request.body.lastname}. ${request.body.message} We will contact you as soon as possible.`;
+    const emailBody = `Thank you for this message ${request.body.firstname} ${request.body.lastname}. Your Message: ${request.body.message} We will contact you as soon as possible.`;
 
     ses.send(email, "nachricht", emailBody).then(() => {
             

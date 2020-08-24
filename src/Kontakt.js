@@ -25,10 +25,14 @@ export default class Kontakt extends React.Component {
         }).then(response => {
             // console.log("Response", response);
             // this.props.history.push("/thankyou");
+            this.setState({
+                email: "",
+                lastname:"",
+                firstname: "",
+                message: "",
+            });
         });
     }
-
-
 
     handleChange(event) {
         this.setState({
@@ -41,12 +45,13 @@ export default class Kontakt extends React.Component {
 
         return(
             
-            <div id="kontakt" >
-                <div>
-                    <input type="text" name="email" placeholder="YOUR EMAIL" onChange={(event) => this.handleChange(event)}></input>
-                    <input type="text" name="lastname" placeholder="LASTNAME" onChange={(event) => this.handleChange(event)}></input>
-                    <input type="text" name="firstname" placeholder="FIRSTNAME" onChange={(event) => this.handleChange(event)}></input>
-                    <input type="text" name="message" placeholder="YOUR MESSAGE" onChange={(event) => this.handleChange(event)}></input>
+            <div id="kontaktcontainer" >
+                <div>WÜNSCHE, ANREGUNG, KRITIK?</div>
+                <div className="kontakt">
+                    <input type="text" value={this.state.email} name="email" placeholder="YOUR EMAIL" onChange={(event) => this.handleChange(event)}></input>
+                    <input type="text" value={this.state.lastname} name="lastname" placeholder="LASTNAME" onChange={(event) => this.handleChange(event)}></input>
+                    <input type="text" value={this.state.firstname} name="firstname" placeholder="FIRSTNAME" onChange={(event) => this.handleChange(event)}></input>
+                    <input className="message" type="text" value={this.state.message} name="message" placeholder="YOUR MESSAGE" onChange={(event) => this.handleChange(event)}></input>
                     <button onClick={(e) => this.sendMessage()} >SEND</button> 
                 </div>
             </div>
