@@ -3,6 +3,7 @@
 body {
     margin: 0;
     padding: 0;
+    height: 100%; 
 }
 
 #root{
@@ -12,11 +13,10 @@ body {
 }
 
 #maincontainer {
-    margin: 0px;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
     position: relative;
 }
 
@@ -338,6 +338,10 @@ body {
     border: 2px solid rgb(150, 150, 150);
 }
 
+#kontaktcontainer button:focus {
+    outline: none;
+}
+
 .warenkorbcontainer{
     margin-bottom: 500px;
 
@@ -345,7 +349,7 @@ body {
 
 .warenkorballes {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .products {
@@ -362,6 +366,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     text-decoration: none;
+    align-items: center;
     color: black;
 }
 
@@ -396,10 +401,11 @@ body {
 }
 
 .warenkorbbutton {
-    justify-self: flex-end;
-    align-self: flex-end;
+    justify-self: center;
+    align-self: center;
     display: flex;
     flex-direction: row;
+    margin-left: 655px;
 }
 
 .warenkorbcontainer button{
@@ -407,7 +413,7 @@ body {
     border: 2px solid rgb(201, 199, 202);
     width: 200px;
     height: 50px;
-    margin: 10px;
+    margin: 20px;
 }
 
 .warenkorballes button:hover {
@@ -451,22 +457,26 @@ body {
 
 #thanks {
     margin-bottom: 600px;
+   
 }
 
 #aboutcontainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    justify-content: center;
 }
 
 #aboutcontainer img{
-    width: 500px;
-    height: auto;
+    width: 350px;
+    height: 350px;
+    justify-self: center;
     margin-bottom: 300px;
 }
 
 .about {
-    max-width: 500px;
+    max-width: 350px;
     margin-left: 30px;
+    margin-top: -25px;
 }
 
 #footer {

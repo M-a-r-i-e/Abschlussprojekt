@@ -26,7 +26,6 @@ router.get("/api/v1/products", (request, response) => {
             success: true,
             products,
         });
-
     })
     
     ).catch((error) => {
@@ -35,9 +34,7 @@ router.get("/api/v1/products", (request, response) => {
             success: false,
             error: error,
         });
-
     });
-
 });
 
 
@@ -205,7 +202,6 @@ router.get('/api/v1/warenkorb', (request, response) => {
 
     });
 
-
 });
 
 
@@ -220,13 +216,21 @@ router.post("/api/v1/buy", (request, response) => {
     // Send email to slack
     const emailBody = `Vielen Dank für deinen Einkauf ${request.body.firstname} ${request.body.lastname}! 
     Deine Adresse: ${request.body.street} ${request.body.number} ${request.body.city} ${request.body.plz}
-    Deine Bestellung: ${products.map((product) => (product.name ) + (product.id ) + (product.price/100 ))} €`; //gesamtes objekt anzeigen?
+    Deine Bestellung: ${products.map((product) => ( product.name ) +
+         ( product.id ) +
+         ( product.price/100 ))} €`; //gesamtes objekt anzeigen?
 
     ses.send(email, "bestellung", emailBody).then(() => {
             
     //Send success message
         response.json({ success: true });
     });
+    // const inhalt = `${products.map((product) => (product.name ) + (product.id ) + (product.price/100 ))} €`;
+    // ses.send("able.eggnog@spicedling.email", "neuebestellung", inhalt).then(() => {
+            
+    //     //Send success message
+    //     response.json({ success: true });
+    // });
 
     // });
 });
@@ -246,6 +250,22 @@ router.post("/api/v1/kontaktmessage", (request, response) => {
         response.json({ success: true });
     });
     // });
+
+    // const message = `Neue Nachricht von ${request.body.firstname} ${request.body.lastname}. Nachricht: ${request.body.message}.`;
+    // ses.send("able.eggnog@spicedling.email", "nachricht", message).then(() => {
+            
+    //     //Send success message
+    //     response.json({ success: true });
+        
+    // }).catch((error) => {
+    //     console.log("error", error);
+    //     response.status(500).json({
+    //         success: false,
+    //         error: error,
+    //     });
+
+    // });
+
 });
 
 

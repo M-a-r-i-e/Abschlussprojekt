@@ -14,12 +14,6 @@ import Plates from "./Plates.js";
 import Vases from "./Vases.js";
 import About from "./About";
 
-// export default function App() {
-//     return (
-
-//         <div>Welcome to this wonderful shop!</div>
-//     );
-// }
 
 export default class App extends React.Component {
     constructor() {
@@ -119,16 +113,16 @@ export default class App extends React.Component {
                         render={() => (
                             <Warenkorb
                                 productsInWarenkorb = {productsInWarenkorb}
-                                // delete={(deleteProduct) => {
+                                // delete={(deleteProductId) => {
                                 //     this.setState({
-                                //         productsInWarenkorb: [
-                                //             ...this.state.productsInWarenkorb,
-                                //             productsInWarenkorb.filter(deleteProduct => {
-                                //                 if(productsInWarenkorb.id == deleteProduct) {
-                                //                     return false;
+                                //         productsInWarenkorb: {
+                                //             ...this.state.productsInWarenkorb,                                        
+                                //             productsInWarenkorb.filter(product => {
+                                //                 if(product.id == deleteProductId) {
+                                //                     return product == false;
                                 //                 }                                
                                 //             })
-                                //         ]                                
+                                //         }                               
                                 //     });
                                 // }}
                             />
@@ -150,15 +144,14 @@ export default class App extends React.Component {
 
                                 reset={(newProduct) => {
                                     this.setState({
-                                        productsInWarenkorb:
-                                            newProduct                                
+                                        productsInWarenkorb: newProduct                                
                                     });
                                 }}
                                 
                             />
                         )}    
                     />
-                    
+                   
                     <Route
                         path="/about" component={About}
                     ></Route>
@@ -181,12 +174,8 @@ export default class App extends React.Component {
                     </div>
                 
                 </BrowserRouter>
-
-
-
+                
             </div>
-
         );
-
     }
 }

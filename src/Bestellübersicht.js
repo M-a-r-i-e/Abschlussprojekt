@@ -45,6 +45,14 @@ export default class Bestellübersicht extends React.Component {
             
             <div id="bestellübersicht" >
                 <div>
+                    <div className="products">
+                        {productsInWarenkorb && productsInWarenkorb.map((product) =>
+                            <div key={product.id} className="warenkorbprodukte">
+                                <Link className="warenkorbnameprice" to={"/product/"+product.id}>
+                                    <img src={product.picture}></img><div className="productname">{product.name}</div>
+                                    <div className="productprice">{product.price / 100} €</div></Link></div>)}
+                    </div>
+                    <div>{user.firstname}</div>
                     
                 </div>
             </div>
