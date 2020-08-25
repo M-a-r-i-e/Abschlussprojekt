@@ -119,9 +119,7 @@ router.get("/api/v1/products/vases", (request, response) => {
             success: false,
             error: error,
         });
-
     });
-
 });
 
 
